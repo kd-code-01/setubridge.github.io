@@ -6,6 +6,7 @@
 
   <!-- ── PRIMARY META ───────────────────────────────────────────── -->
   <title>SetuBridge — Magento & Shopify eCommerce Development Agency</title>
+  <meta name="google-site-verification" content="_qE4dbfDLCu4_xdLYzDzT1KJ12E_fVEYdKKRhOtxW7E" />
   <meta name="description" content="Globally-recognized eCommerce agency specializing in Magento 2, Shopify Plus & Hyvä development. 100+ projects, 550+ customers, 12+ countries. Adobe & Shopify certified." />
   <meta name="keywords" content="Magento development, Shopify development, Hyvä theme, eCommerce agency, Magento 2, Shopify Plus, B2B commerce, speed optimization, CRO, Magento extensions" />
   <meta name="author" content="SetuBridge" />
@@ -822,17 +823,6 @@
       overflow: hidden;
       display: flex; align-items: center; justify-content: center;
     }
-    .case-card-image img {
-      width: 100%; height: 100%; object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-    .case-card:hover .case-card-image img { transform: scale(1.04); }
-    .case-card-image-placeholder {
-      font-family: var(--font-display);
-      font-size: 3rem; font-weight: 800;
-      color: var(--text-disabled);
-      opacity: 0.3;
-    }
 
     .case-card-body { padding: var(--space-6); flex: 1; display: flex; flex-direction: column; }
     .case-card-header {
@@ -1188,6 +1178,68 @@
       margin: 0;
     }
 
+    /* ─── CASE CARD COVERS (CSS-only, no images) ────────────────── */
+    .case-card-cover {
+      width: 100%; height: 160px;
+      position: relative;
+      overflow: hidden;
+      display: flex; align-items: flex-end;
+      padding: var(--space-5);
+    }
+    /* big ghost monogram */
+    .case-card-cover::before {
+      content: attr(data-mono);
+      position: absolute;
+      right: var(--space-4); top: 50%;
+      transform: translateY(-50%);
+      font-family: var(--font-display);
+      font-size: 5rem; font-weight: 800;
+      letter-spacing: -0.05em; line-height: 1;
+      color: rgba(255,255,255,0.07);
+      pointer-events: none;
+      white-space: nowrap;
+    }
+    /* subtle diagonal noise stripe */
+    .case-card-cover::after {
+      content: '';
+      position: absolute; inset: 0;
+      background-image: repeating-linear-gradient(
+        -45deg,
+        transparent,
+        transparent 18px,
+        rgba(255,255,255,0.018) 18px,
+        rgba(255,255,255,0.018) 19px
+      );
+      pointer-events: none;
+    }
+    .case-cover-tag {
+      position: relative; z-index: 1;
+      font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.13em; text-transform: uppercase;
+      color: rgba(255,255,255,0.55);
+      background: rgba(0,0,0,0.32);
+      padding: 3px 9px; border-radius: 3px;
+      backdrop-filter: blur(6px);
+    }
+    .case-cover-metric {
+      position: absolute; top: var(--space-5); right: var(--space-5);
+      z-index: 1;
+      font-family: var(--font-mono);
+      font-size: 0.75rem; font-weight: 600;
+      color: rgba(255,255,255,0.75);
+      background: rgba(0,0,0,0.35);
+      padding: 3px 9px; border-radius: 3px;
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    /* per-card gradients */
+    .cover-kfs       { background: linear-gradient(135deg, #041422 0%, #071e35 55%, #003d52 100%); }
+    .cover-levels    { background: linear-gradient(135deg, #0e0a1a 0%, #19102e 55%, #261848 100%); }
+    .cover-ropes     { background: linear-gradient(135deg, #0a1118 0%, #101c28 55%, #192838 100%); }
+    .cover-smartpack { background: linear-gradient(135deg, #1a0800 0%, #2e1400 55%, #451e00 100%); }
+    .cover-supertails{ background: linear-gradient(135deg, #031510 0%, #082318 55%, #0d3222 100%); }
+    .cover-owc       { background: linear-gradient(135deg, #120008 0%, #200d15 55%, #32101e 100%); }
+
     /* Utility */
     .space-top { margin-top: var(--space-4); }
     .mt-8 { margin-top: var(--space-8); }
@@ -1520,8 +1572,9 @@
         <div class="work-grid" id="workGrid">
 
           <article class="case-card reveal" data-platform="shopify" style="--i:0">
-            <div class="case-card-image">
-              <img src="https://store.setubridge.com/media/wysiwyg/imgpsh_fullsize_anim_2_.webp" alt="KFS case study" loading="lazy" />
+            <div class="case-card-cover cover-kfs" data-mono="KFS" aria-hidden="true">
+              <span class="case-cover-metric">+30% Sales</span>
+              <span class="case-cover-tag">Toys &amp; Games · UK</span>
             </div>
             <div class="case-card-body">
               <div class="case-card-header">
@@ -1538,8 +1591,9 @@
           </article>
 
           <article class="case-card reveal" data-platform="shopify" style="--i:1">
-            <div class="case-card-image">
-              <img src="https://store.setubridge.com/media/wysiwyg/imgpsh_fullsize_anim_3_.webp" alt="Levels London case study" loading="lazy" />
+            <div class="case-card-cover cover-levels" data-mono="LL" aria-hidden="true">
+              <span class="case-cover-metric">CRO + Speed</span>
+              <span class="case-cover-tag">Fashion · UK</span>
             </div>
             <div class="case-card-body">
               <div class="case-card-header">
@@ -1550,14 +1604,15 @@
               <p class="case-card-meta">Fashion · United Kingdom</p>
               <div class="case-card-result">
                 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 12V4M4 8l4-4 4 4"/></svg>
-                Seamless inventory & database integration
+                Seamless inventory &amp; database integration
               </div>
             </div>
           </article>
 
           <article class="case-card reveal" data-platform="magento" style="--i:2">
-            <div class="case-card-image">
-              <img src="https://store.setubridge.com/media/wysiwyg/imgpsh_fullsize_anim_4_.webp" alt="PremiumRopes case study" loading="lazy" />
+            <div class="case-card-cover cover-ropes" data-mono="PR" aria-hidden="true">
+              <span class="case-cover-metric">−30% Issues</span>
+              <span class="case-cover-tag">Industrial · Netherlands</span>
             </div>
             <div class="case-card-body">
               <div class="case-card-header">
@@ -1574,8 +1629,9 @@
           </article>
 
           <article class="case-card reveal" data-platform="magento" style="--i:3">
-            <div class="case-card-image">
-              <img src="https://store.setubridge.com/media/wysiwyg/imgpsh_fullsize_anim_5_.webp" alt="SmartPack USA case study" loading="lazy" />
+            <div class="case-card-cover cover-smartpack" data-mono="SP" aria-hidden="true">
+              <span class="case-cover-metric">Hyvä + AWS</span>
+              <span class="case-cover-tag">Print on Demand · USA</span>
             </div>
             <div class="case-card-body">
               <div class="case-card-header">
@@ -1592,8 +1648,9 @@
           </article>
 
           <article class="case-card reveal" data-platform="shopify" style="--i:4">
-            <div class="case-card-image">
-              <img src="https://store.setubridge.com/media/wysiwyg/imgpsh_fullsize_anim_6_.webp" alt="SuperTails case study" loading="lazy" />
+            <div class="case-card-cover cover-supertails" data-mono="ST" aria-hidden="true">
+              <span class="case-cover-metric">Private App</span>
+              <span class="case-cover-tag">Pet Products · India</span>
             </div>
             <div class="case-card-body">
               <div class="case-card-header">
@@ -1610,8 +1667,9 @@
           </article>
 
           <article class="case-card reveal" data-platform="magento" style="--i:5">
-            <div class="case-card-image">
-              <div class="case-card-image-placeholder" aria-hidden="true">OWC</div>
+            <div class="case-card-cover cover-owc" data-mono="OWC" aria-hidden="true">
+              <span class="case-cover-metric">M1→M2</span>
+              <span class="case-cover-tag">Wine · Singapore</span>
             </div>
             <div class="case-card-body">
               <div class="case-card-header">
