@@ -1,3 +1,10 @@
 .claude/*
 CLAUDE.md
 SETUBRIDGE_BRAND_RESEARCH.md
+
+# wrangler files
+.wrangler
+.dev.vars*
+!.dev.vars.example
+.env*
+!.env.example
